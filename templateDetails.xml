@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9" type="template" client="site" method="upgrade">
+	<name>arsha</name>
+	<version>1.0</version>
+	<creationDate>26 septembre 2020</creationDate>
+	<author>Alexon Balangue</author>
+	<authorUrl>www.AlexonbStudio.fr</authorUrl>
+	<authorEmail>contact@AlexonbStudio.fr</authorEmail>
+	<copyright>Copyright (C) 2016-2020 Alexon Balangue. All rights reserved.</copyright>
+	<description>TPL_ARSHA_XML_DESCRIPTION</description>
+	<files>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>offline.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.php</filename>
+		<filename>index.html</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<folder>assets</folder>
+		<folder>html</folder>
+		<folder>language</folder>
+	</files>
+	<positions>
+		<position>bs4-search</position>
+		<position>bs4-information</position>
+		<position>bs4-services</position>
+		<position>bs4-consumer</position>
+		<position>bs4-contribute</position>
+		<position>bs4-confiances</position>
+		<position>bs4-breadcrumb</position>
+		<position>bs4-translator</position>
+		<position>bs4-contact</position>
+		<position>bs4-author</position>
+		<position>bs4-tags</position>
+		<position>bs4-footer1</position>
+		<position>bs4-footer2</position>
+		<position>bs4-footer3</position>
+		<position>bs4-footer4</position>
+		<position>arsha_menu</position>
+		<position>banner-footer</position>
+		<position>banner-mfooter</position>
+		<position>banner-header</position>
+		<position>banner-mheader</position>
+		<position>sidebar-right</position>
+		<position>sidebar-left</position>
+		<position>footer</position>
+		<position>referencer</position>
+		<position>debug</position>
+	</positions>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_arsha.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_arsha.sys.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.tpl_arsha.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.tpl_arsha.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field name="groups-html"
+					type="list"
+					default="home"
+					label="TPL_ARSHA_METHODHTML_LABEL"
+					description="TPL_ARSHA_METHODHTML_DESC">
+						<option value="">Keep default</option>
+						<option value="home">Home</option>
+						<option value="component">Component</option>
+				</field>
+				<field name="groups-script"
+					type="list"
+					default="archa"
+					label="TPL_ARSHA_METHODSCRIPT_LABEL"
+					description="TPL_ARSHA_METHODSCRIPT_DESC">
+						<option value="arsha">Complete</option>
+				</field>
+				<field name="groups-method"
+					type="list"
+					default="production"
+					label="TPL_ARSHA_METHODDESIGNER_LABEL"
+					description="TPL_ARSHA_METHODDESIGNER_DESC">
+						<option value="custom">TPL_ARSHA_METHODDESIGNER_OPTION_CUSTOM</option>
+						<option value="production">TPL_ARSHA_METHODDESIGNER_OPTION_PROD</option>
+				</field>
+			</fieldset>
+			<fieldset name="Hidding" label="Hidding support">
+				<field name="Pages-js-default"
+					type="radio"
+					class="btn-group btn-group-yesno"
+					default=""
+					label="TPL_ARSHA_HIDEJSDEFAULT_LABEL"
+					description="TPL_ARSHA_HIDEJSDEFAULT_DESC">
+						<option value="">Keep default</option>
+						<option value="home">home</option>
+						<option value="component">Component</option>
+				</field>
+			</fieldset>
+			<fieldset name="TPLarsha" label="Edit templates">
+				<field name="logoFile" class="" type="media" default=""
+					label="TPL_ARSHA_LOGO_LABEL"
+					description="TPL_ARSHA_LOGO_LABEL" />
+			</fieldset>
+		</fields>
+	</config>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited by Alexon Balangue">https://AlexonbStudio.fr/index.php?option=com_ars&amp;view=update&amp;task=all&amp;format=xml</server>
+		<server type="extension" priority="2" name="TPL - arsha">http://AlexonbStudio.fr/index.php?option=com_ars&amp;view=update&amp;task=stream&amp;format=xml&amp;id=17</server>
+	</updateservers>
+</extension>

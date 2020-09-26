@@ -1,0 +1,126 @@
+<?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  Templates.coopceptor (Stylish)
+ *
+ * @copyright   Copyright (C) 2018 Alexon Balangue. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+
+function modChrome_nones($module, &$params, &$attribs)
+{
+	if ($module->content)
+	{
+		echo $module->content;
+	}
+}
+/******************BEGINS BOOSTRAP***********************/
+function modChrome_bswell($module, &$params, &$attribs)
+{
+	$moduleTag     = $params->get('module_tag', 'div');
+	$bootstrapSize = (int) $params->get('bootstrap_size', 0);
+	$moduleClass   = $bootstrapSize != 0 ? ' span' . $bootstrapSize : '';
+	$headerTag     = htmlspecialchars($params->get('header_tag', 'h3'));
+	$headerClass   = htmlspecialchars($params->get('header_class', 'page-header'));
+
+	if ($module->content)
+	{
+		echo '<' . $moduleTag . ' class="well ' . htmlspecialchars($params->get('moduleclass_sfx')) . $moduleClass . '">';
+
+			if ($module->showtitle)
+			{
+				echo '<' . $headerTag . ' class="' . $headerClass . '">' . $module->title . '</' . $headerTag . '>';
+			}
+
+			echo $module->content;
+		echo '</' . $moduleTag . '>';
+	}
+}
+
+/******************BOOSTRAP 4***********************/
+function modChrome_bs4withtitlehead($module, &$params, &$attribs)
+{
+	$moduleTag     = $params->get('module_tag', 'div');
+	$bootstrapSize = (int) $params->get('bootstrap_size', 0);
+	$moduleClass   = $bootstrapSize != 0 ? 'col col-12 col-md-' . $bootstrapSize : '';
+	$headerTag     = htmlspecialchars($params->get('header_tag', 'h4'));
+	$headerClass   = htmlspecialchars($params->get('header_class', 'text-uppercase mb-4'));
+
+	if ($module->content)
+	{
+		echo '<' . $moduleTag . ' class="' . $moduleClass . '">';
+
+			if ($module->showtitle)
+			{
+				echo '<' . $headerTag . ' class="' . $headerClass . '">' . $module->title . '</' . $headerTag . '>';
+			}
+
+			echo $module->content;
+		echo '</' . $moduleTag . '>';
+	}
+}
+function modChrome_bs4frontendshowNocolor($module, &$params, &$attribs)
+{
+	$moduleTag     = $params->get('module_tag', 'div');
+	$bootstrapSize = (int) $params->get('bootstrap_size', 0);
+	$moduleClass   = $bootstrapSize != 0 ? 'col col-12 col-md-' . $bootstrapSize . $bootstrapSize . ' col-lg-' . $bootstrapSize : '';
+	$headerTag     = htmlspecialchars($params->get('header_tag', 'h4'));
+	$headerClass   = htmlspecialchars($params->get('header_class', 'text-uppercase mb-4'));
+
+	if ($module->content)
+	{
+		echo '<' . $moduleTag . ' class="' . $moduleClass . '">';
+
+			if ($module->showtitle)
+			{
+				echo '<' . $headerTag . ' class="' . $headerClass . '" itemprop="alternativeHealine">' . $module->title . '</' . $headerTag . '><hr class="smallers-color" />';
+			}
+
+			echo '<div class="row">'.$module->content.'</div>';
+		echo '</' . $moduleTag . '>';
+	}
+}
+function modChrome_bs4frontendshowYescolor($module, &$params, &$attribs)
+{
+	$moduleTag     = $params->get('module_tag', 'div');
+	$bootstrapSize = (int) $params->get('bootstrap_size', 0);
+	$moduleClass   = $bootstrapSize != 0 ? 'col col-12 col-md-' . $bootstrapSize . $bootstrapSize . ' col-lg-' . $bootstrapSize : '';
+	$headerTag     = htmlspecialchars($params->get('header_tag', 'h3'));
+	$headerClass   = htmlspecialchars($params->get('header_class', 'text-uppercase mb-4'));
+
+	if ($module->content)
+	{
+		echo '<' . $moduleTag . ' class="' . $moduleClass . '">';
+
+			if ($module->showtitle)
+			{
+				echo '<' . $headerTag . ' class="' . $headerClass . '" itemprop="alternativeHealine">' . $module->title . '</' . $headerTag . '><hr class="smallers" />';
+			}
+
+			echo '<div class="row">'.$module->content.'</div>';
+		echo '</' . $moduleTag . '>';
+	}
+}
+function modChrome_bs4FooterShow($module, &$params, &$attribs)
+{
+	$moduleTag     = $params->get('module_tag', 'div');
+	$bootstrapSize = (int) $params->get('bootstrap_size', 0);
+	$moduleClass   = $bootstrapSize != 0 ? 'col col-12 col-md-' . $bootstrapSize : '';
+	$headerTag     = htmlspecialchars($params->get('header_tag', 'h3'));
+	$headerClass   = htmlspecialchars($params->get('header_class', 'text-uppercase mb-4'));
+
+	if ($module->content)
+	{
+		echo '<' . $moduleTag . ' class="' . $moduleClass . '">';
+
+			if ($module->showtitle)
+			{
+				echo '<' . $headerTag . ' class="' . $headerClass . '">' . $module->title . '</' . $headerTag . '>';
+			}
+
+			echo $module->content;
+		echo '</' . $moduleTag . '>';
+	}
+}
