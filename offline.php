@@ -57,67 +57,81 @@ $twofactormethods = UsersHelper::getTwoFactorMethods();
 	[link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/arsha/assets/production/arsha.min.css" type="text/css" /]
 	
 [/head]
-	[begins tags='body' id='page-top' class='index' mdatatype='http://schema.org/WebPage' /]
+	[begins tags='body' /]
 <jdoc:include type="message" />
 
-    [header class="masthead sprites sprites-bg d-flex"]
-      
-		[begins tags="div" class="container text-center my-auto" mdatatype"http://schema.org/CreativeWork" /]
-			<?php if ($apps->get('offline_image') && file_exists($apps->get('offline_image'))) : ?>
-				<img itemprop="primaryImageOfPage" src="<?php echo $this->baseurl.'/templates/arsha/assets/production/images/profile.png'; ?>" alt="demo" class="img-responsive img-circle">
-				<meta itemprop="image" content="<?php echo $this->baseurl.'/templates/arsha/assets/production/images/profile.png'; ?>">
-					<?php endif; ?>
-			[begins tags='h1' class='mb-1' mdataprop='author']
-				<?php echo $sitename; ?>
-			[ends tags='h1' /]
-			<meta itemprop="name" content="<?php echo $sitename; ?>">
-	
-			<?php if ($apps->get('display_offline_message', 1) == 1 && str_replace(' ', '', $apps->get('offline_message')) != '') : ?>
-			[h3 class="mb-5"]<?php echo $apps->get('offline_message'); ?>[/h3]
-			<?php elseif ($apps->get('display_offline_message', 1) == 2 && str_replace(' ', '', JText::_('JOFFLINE_MESSAGE')) != '') : ?>
-			<meta itemprop="description" content="<?php echo JText::_('JOFFLINE_MESSAGE'); ?>">
-			<?php endif; ?>	
-		[ends tags="div" /]
-    [/header]
-    [section class="content-section"]
-      [begins tags='div' class='container' /]
-        [begins tags='div' class='row' /]
-			[begins tags="div" class="col-lg-8 mx-auto" /]
-           [begins tags='form' class='form-inline' id='form-login' more='action="<?php echo JRoute::_('index.php', true); ?>" method="post"' /]
-			  [begins tags="div" class="control-group" /] 
-                [begins tags="div" class="form-group floating-label-form-group controls mb-0 pb-2" /] 
-                  <label><?php echo JText::_('JGLOBAL_USERNAME'); ?></label>
-                  [input name="username" id="username" type="text" class="form-control" placeholder="<?php echo JText::_('JGLOBAL_USERNAME'); ?>" /]
-                  <p class="help-block text-danger"></p>
+
+		<!-- ======= Header ======= -->
+		[header id="header" class="fixed-top "]
+			[div class="container d-flex align-items-center"]
+
+				<!--[h1 class="logo mr-auto"]<a href="index.html"><?php echo $sitename; ?></a>[/h1]-->
+				<!-- Uncomment below if you prefer to use an image logo -->
+				 <a href="index.html" class="logo mr-auto"><img src="<?php echo $mypersonal_photo; ?>" alt="<?php echo $sitename; ?>" class="img-fluid"></a>
+
+			[nav class="nav-menu d-none d-lg-block"]
+				<jdoc:include type="modules" name="arsha_menu" style="nones" />
+			[/nav]<!-- .nav-menu -->
+			<a href="#about" class="get-started-btn scrollto">Get Started</a>
+
+			[/div]
+		[/header]<!-- End Header -->
+  
+		<!-- ======= Hero Section ======= -->
+		[section id="hero" class="d-flex align-items-center"]
+
+			[begins tags="div" class="container">
+				[begins tags="div" class="row">
+					[begins tags="div" class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+						<h1><?php echo $sitename; ?></h1>
+						<?php if ($apps->get('display_offline_message', 1) == 1 && str_replace(' ', '', $apps->get('offline_message')) != '') : ?>
+						<h2><?php echo $apps->get('offline_message'); ?></h2>
+						<?php elseif ($apps->get('display_offline_message', 1) == 2 && str_replace(' ', '', JText::_('JOFFLINE_MESSAGE')) != '') : ?>
+						
+						<h2><?php echo JText::_('JOFFLINE_MESSAGE'); ?></h2>
+						<?php endif; ?>	
+						[begins tags="div" class="d-lg-flex">
+							<a href="#about" class="btn-get-started scrollto">Get Started</a>
+							<a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a>
+						[ends tags="div" /]
+					[ends tags="div" /]
+					[begins tags="div" class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+						<img src="<?php echo JUri::root(true).'/templates/arsha/assets/images/'; ?>hero-img.png" class="img-fluid animated" alt="">
+						
+					[ends tags="div" /]
+				[ends tags="div" /]
+			[ends tags="div" /]
+
+		[/section]<!-- End Hero -->  
+
+        <div class="row">
+
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form action="<?php echo JRoute::_('index.php', true); ?>" method="post" role="form">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="username"><?php echo JText::_('JGLOBAL_USERNAME'); ?></label>
+                  <input type="text" name="username" class="form-control" id="username" data-rule="minlen:4" data-msg="<?php echo JText::_('JGLOBAL_USERNAME'); ?>" />
                 </div>
-             [ends tags="div" /] 
-			  [begins tags="div" class="control-group" /] 
-                [begins tags="div" class="form-group floating-label-form-group controls mb-0 pb-2" /] 
-                  <label><?php echo JText::_('JGLOBAL_PASSWORD'); ?></label>
-                 [input type="password" name="password" class="form-control" placeholder="<?php echo JText::_('JGLOBAL_PASSWORD'); ?>" id="passwd" /]
-                  <p class="help-block text-danger"></p>
+                <div class="form-group col-md-6">
+                  <label for="secretkey"><?php echo JText::_('JGLOBAL_PASSWORD'); ?></label>
+                  <input type="password" class="form-control" name="secretkey" id="secretkey" data-rule="minlen:4" data-msg="<?php echo JText::_('JGLOBAL_PASSWORD'); ?>" />
                 </div>
-              [ends tags="div" /] 
-			<?php if (count($twofactormethods) > 1) : ?>
-			[begins tags="div" class="control-group" /] 
-				[begins tags="div" class="form-group floating-label-form-group controls mb-0 pb-2" /] 
-					[begins tags='label' more='for="secretkey"' /]<?php echo JText::_('JGLOBAL_SECRETKEY'); ?>[ends tags="label" /]
-					[input type="text" name="secretkey" class="form-control" placeholder="<?php echo JText::_('JGLOBAL_SECRETKEY'); ?>" id="secretkey" /]
-				[ends tags="div" /]  
-			[ends tags="div" /]  
-			<?php endif; ?>
-              <br>
-				[input type="submit" name="Submit" class="btn btn-primary btn-xl" value="<?php echo JText::_('JLOGIN'); ?>" /]
+              </div>
+				[input type="submit" name="Submit" class="text-center" value="<?php echo JText::_('JLOGIN'); ?>" /]
 				[input type="hidden" name="option" value="com_users" /]
 				[input type="hidden" name="task" value="user.login" /]
 				[input type="hidden" name="return" value="<?php echo base64_encode(JUri::base()); ?>" /]
 				<?php echo JHtml::_('form.token'); ?>
-           [ends tags="form" /]
-			[ends tags="div" /] 
-        [ends tags="div" /]
-      [ends tags="div" /]
-    [/section]
+            </form>
+          </div>
 
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+  
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -125,12 +139,34 @@ $twofactormethods = UsersHelper::getTwoFactorMethods();
     <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+          <div class="col-lg-12">          
+		  <h4><?php echo JText::_('TPL_ARSHA_TITLE_NEWLETTER'); ?></h4>
+            <p><?php echo JText::_('TPL_ARSHA_SHORT_NEWLETTER'); ?></p>
+
+            <form action="https://alexonbstudio.us19.list-manage.com/subscribe/post?u=18b2219e44bdafed0e558cc71&amp;id=3d7f1b18ad" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div class="form-row">
+                <div class="col-md-4 form-group">
+					<strong><?php echo JText::_('TPL_ARSHA_STATUS_NEWLETTER'); ?> </strong><br>
+						<input type="checkbox" value="1" name="group[77865][1]" id="mce-group[77865]-77865-0"> <label for="mce-group[77865]-77865-0"><?php echo JText::_('TPL_ARSHA_CHOOSE1_NEWLETTER'); ?> </label>
+						 <input type="checkbox" value="2" name="group[77865][2]" id="mce-group[77865]-77865-1"> <label for="mce-group[77865]-77865-1"><?php echo JText::_('TPL_ARSHA_CHOOSE2_NEWLETTER'); ?></label>
+						 <input type="checkbox" value="4" name="group[77865][4]" id="mce-group[77865]-77865-2"> <label for="mce-group[77865]-77865-2"><?php echo JText::_('TPL_ARSHA_CHOOSE3_NEWLETTER'); ?> </label>
+                </div>
+                <div class="col-md-4 form-group">
+					<input type="email" value="" name="EMAIL" class="form-control required email" id="mce-EMAIL" placeholder="Email" data-rule="email" data-msg="email">
+				  </div>
+                <div class="col-md-4 form-group">
+					<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_18b2219e44bdafed0e558cc71_3d7f1b18ad" tabindex="-1" value=""></div>
+					<div class="clear"><input type="submit" value="<?php echo JText::_('TPL_ARSHA_BTN_NEWLETTER'); ?>" name="subscribe" id="mc-embedded-subscribe" class="btn btn-lg btn-info"></div>
+				</div>
+              </div>
+              <div class="mb-3">	
+				<div id="mce-responses" class="clear">
+					<div class="response" id="mce-error-response" style="display:none"></div>
+					<div class="response" id="mce-success-response" style="display:none"></div>
+				</div> 
+              </div>
             </form>
+
           </div>
         </div>
       </div>
@@ -138,60 +174,27 @@ $twofactormethods = UsersHelper::getTwoFactorMethods();
 
     <div class="footer-top">
       <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Arsha</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
-
-        </div>
+	  
+					[begins tags='div' class='row' /]
+						<?php if ($this->countModules('bs4-footer1')) : ?>
+							[begins tags='div' class='col-lg-3 col-md-6 footer-contact' /]<jdoc:include type="modules" name="bs4-footer1" style="none" />[ends tags="div" /]
+						<?php endif; ?>	
+						<?php if ($this->countModules('bs4-footer2')) : ?>
+							[begins tags='div' class='col-lg-3 col-md-6 footer-contact' /]<jdoc:include type="modules" name="bs4-footer2" style="none" />[ends tags="div" /]
+						<?php endif; ?>	
+						<?php if ($this->countModules('bs4-footer3')) : ?>
+							[begins tags='div' class='col-lg-3 col-md-6 footer-contact' /]<jdoc:include type="modules" name="bs4-footer3" style="none" />[ends tags="div" /]
+						<?php endif; ?>	
+						<?php if ($this->countModules('bs4-footer4')) : ?>
+							[begins tags='div' class='col-lg-3 col-md-6 footer-contact' /]<jdoc:include type="modules" name="bs4-footer4" style="none" />[ends tags="div" /]
+						<?php endif; ?>	
+					[ends tags="div" /]
       </div>
     </div>
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <?php date('Y'); ?> <strong><span><?php echo $sitename; ?></span></strong>. All Rights Reserved
+        &copy; Copyright <?php date('Y'); ?> <a href="<?php echo $this->baseurl; ?>"><strong><span><?php echo $sitename; ?></span></strong></a>. <?php echo JText::_('TPL_ARSHA_FOOT_DOWN2_FULL'); ?>
       </div>
       <div class="credits">
 	    Powered by <a href="https://joomla.org">Joomla</a>, Developer by <a href="https://alexonbstudio.yo.fr">AlexonbStudio</a> &amp; Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
